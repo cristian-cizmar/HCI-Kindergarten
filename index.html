@@ -1,68 +1,70 @@
 <!DOCTYPE html>
 <html lang="ro">
+  <head>
+    <title>Concertul lui Tom</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
 
-<head>
-	<title>Concertul lui Tom</title>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+  <body>
+    <div id="mainDiv">
+      <div id="tempText"></div>
+      <button id="nextStoryButton" onclick="onClickNextStoryButton()">
+        Next
+      </button>
+    </div>
 
-<body>
-	<div id="mainDiv">
-		<div id="tempText"></div>
-		<button id="nextStoryButton" onclick="onClickNextStoryButton()">Next</button>
-	</div>
+    <script>
+      var tempStoryTexts = [
+        "In aceasta minunata seara se anunta o petrecere deosebita, unde invitatul special, Tom, va canta cele mai frumoase simfonii la vioara.",
+        "Din pacate, Tom nu si-a pregatit tinuta pentru aceasta seara, asa ca merge la mama sa care este cea mai priceputa croitoreasa din oras. Mama sa il roaga sa ramana o clipita pana ii ia masurile cu ajutorul unui centimetru, apoi ii da voie sa plece. Petrecerea se apropie, Tom isi ia minunatul costum de la mama sa si porneste spre localul unde avea loc  evenimentul.",
+        "Cand ajunge acolo este invitat la bucatarie, unde ospatarul Jerry, il serveste cu o ceasca de cafea si doua croissante cu ciocolata\.",
+        " Dupa ce Tom serveste bucatele, urca pe scena si destinde atmofera\.",
+        "Intre timp, ospatarul Jerry se deplaseaza catre mese pentru a servi ceilalti invitati, dar din neatentie rastoarna tava, sparge farfuriile facand un zgomot puternic, intrerupand astfel, muzica.",
+        "Tom, suparat ca i-a distrus spectacolul, se opreste din cantat, coboara de pe scena si incepe sa alerge dupa Jerry.",
+        "Intre timp, vine politistul Spike si ii pune catusele lui Tom pentru a-l putea calma.",
+        "Cand toata lumea e linistita, stau de vorba, Tom este eliberat si isi cere iertare, dar la fel face si Jerry.",
+        "Concertul a fost, pana la urma, reluat, Tom a reusit sa-si interpreteze toate melodiile pentru care s-a pregatit iar toata lumea a plecat multumita catre casa.",
+      ];
+      var pos = 1,
+        canPress = true;
+      $("#tempText").text(tempStoryTexts[0]);
 
-	<script>
+      // on press spacebar
+      document.body.onkeyup = function (e) {
+        if (e.keyCode == 32) {
+          onClickNextStoryButton();
+        }
+      };
 
-		var tempStoryTexts = ["In aceasta minunata seara se anunta o petrecere deosebita, unde invitatul special, Tom, va canta cele mai frumoase simfonii la vioara.",
-		"Din pacate, Tom nu si-a pregatit tinuta pentru aceasta seara, asa ca merge la mama sa care este cea mai priceputa croitoreasa din oras. Mama sa il roaga sa ramana o clipita pana ii ia masurile cu ajutorul unui centimetru, apoi ii da voie sa plece. Petrecerea se apropie, Tom isi ia minunatul costum de la mama sa si porneste spre localul unde avea loc  evenimentul.",
-		"Cand ajunge acolo este invitat la bucatarie, unde ospatarul Jerry, il serveste cu o ceasca de cafea si doua croissante cu ciocolata\.",
-		" Dupa ce Tom serveste bucatele, urca pe scena si destinde atmofera\.",
-		"Intre timp, ospatarul Jerry se deplaseaza catre mese pentru a servi ceilalti invitati, dar din neatentie rastoarna tava, sparge farfuriile facand un zgomot puternic, intrerupand astfel, muzica.",
-		"Tom, suparat ca i-a distrus spectacolul, se opreste din cantat, coboara de pe scena si incepe sa alerge dupa Jerry.",
-		"Intre timp, vine politistul Spike si ii pune catusele lui Tom pentru a-l putea calma.",
-		"Cand toata lumea e linistita, stau de vorba, Tom este eliberat si isi cere iertare, dar la fel face si Jerry.",
-		"Concertul a fost, pana la urma, reluat, Tom a reusit sa-si interpreteze toate melodiile pentru care s-a pregatit iar toata lumea a plecat multumita catre casa."
-		];
-		var pos = 1, canPress = true;
-		$("#tempText").text(tempStoryTexts[0]);
+      function nextPartOfStory() {
+        pos++;
 
-		// on press spacebar
-		document.body.onkeyup = function(e){
-		    if(e.keyCode == 32){
-		        onClickNextStoryButton()
-		    }
-		}
+        if (pos > 9) {
+          $("#tempText").text(
+            "Partea de poveste s-a incheiat, urmeaza probele"
+          );
+          $(location).attr("href", "ex1.html");
+        } else {
+          document.getElementById("mainDiv").style.backgroundImage =
+            "url(p" + pos + ".jpg)";
+          $("#tempText").text(tempStoryTexts[pos - 1]);
+        }
+      }
 
-		function nextPartOfStory() {
-			pos++;
+      function onClickNextStoryButton() {
+        if (!canPress) return;
+        canPress = false;
+        $("#nextStoryButton").attr("style", "display:none");
 
-			if(pos > 9){
-				$("#tempText").text("Partea de poveste s-a incheiat, urmeaza probele");
-			}
-			else{
-				document.getElementById('mainDiv').style.backgroundImage="url(p"+pos+".jpg)";
-				$("#tempText").text(tempStoryTexts[pos-1]);
-			}
-		}
+        setTimeout(function () {
+          $("#nextStoryButton").attr("style", "display:block");
+          canPress = true;
+        }, 1000);
 
-		function onClickNextStoryButton() {
-			if (!canPress) return;
-			canPress = false;
-			$("#nextStoryButton").attr("style", "display:none");
-			
-			setTimeout(function() { 
-				$("#nextStoryButton").attr("style", "display:block");
-				canPress = true;
-			}, 1000);
-			
-			nextPartOfStory();
-		}
-
-	</script>
-
-</body>
-
+        nextPartOfStory();
+      }
+    </script>
+  </body>
 </html>

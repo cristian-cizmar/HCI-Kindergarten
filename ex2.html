@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div>
+        Buna eu sunt Jerry si acum te voi ruga sa asculti cu atentie ce rostesc
+        eu.
+      </div>
+      <div id="textDiv">
+        <div id="circle" class="ex2_correct">
+          <span id="text">sim-fo-ni-e</span>
+        </div>
+        <div id="circle" class="ex2_wrong">
+          <span id="text">simfo-ni-e</span>
+        </div>
+        <div id="circle" class="ex2_wrong">
+          <span id="text">simfo-nie</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".ex2_wrong").click(function () {
+          $(this).hide();
+        });
+        $(".ex2_correct").click(function () {
+          $(location).attr("href", "ex3.html");
+        });
+      });
+    </script>
+  </body>
+</html>
