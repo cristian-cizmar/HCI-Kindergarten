@@ -65,3 +65,10 @@ body {
   position: static !important;
   z-index: 100;
 }
+
+#cornDiv > img {
+  width: 300px;
+  height: 300px;
+  margin-left: 20px;
+  visibility: hidden;
+}
