@@ -21,7 +21,8 @@
     <script>
       $(document).ready(function () {
         $("#ex3_wrong1,#ex3_wrong2").click(function () {
-          $(this).hide();
+          $(location).attr("href", "ex3.html");
+          $(this).css({border: '1px solid red'})
         });
         $("#ex3_correct").click(function () {
           $(location).attr("href", "ex4.html");

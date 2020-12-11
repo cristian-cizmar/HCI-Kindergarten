@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        Tom doreste sa isi formeze o orchestra: Selecteaza cu un click pe imagine toate instrumentele muzicale:
+    </div>
+    <div class="imgDiv1">
+        <img src="ex8/8a.png" id="ex8_wrong1"  alt=""/>
+        <img src="ex8/8b.png" id="ex8_correct1"  alt=""/>
+        <img src="ex8/8c.png" id="ex8_wrong2"  alt=""/>
+        <img src="ex8/8d.png" id="ex8_correct2"  alt=""/>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var correctAnswers = []
+
+
+        $("#ex8_wrong1,#ex8_wrong2").click(function () {
+            //$(this).hide();
+            $(location).attr("href", "ex8.html");
+            $(this).css({border: '1px solid red'})
+        });
+        $("#ex8_correct1").click(function () {
+            $(this).css({border: '1px solid green'})
+            if(!correctAnswers.includes("pian"))
+                correctAnswers.push("pian")
+            if(correctAnswers.length > 1)
+                $(location).attr("href", "ex9.html");
+
+        });
+        $("#ex8_correct2").click(function () {
+            $(this).css({border: '1px solid green'})
+            if(!correctAnswers.includes("vioara"))
+                correctAnswers.push("vioara")
+            if(correctAnswers.length > 1)
+                $(location).attr("href", "ex9.html");
+        });
+    });
+</script>
+</body>
+</html>

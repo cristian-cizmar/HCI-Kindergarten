@@ -26,7 +26,8 @@
 
 
         $("#ex4_wrong").click(function () {
-            $(this).hide();
+            $(this).css({border: '1px solid red'})
+            $(location).attr("href", "ex4.html");
         });
         $("#ex4_correct1").click(function () {
             if(!correctAnswers.includes("centi"))

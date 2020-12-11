@@ -21,7 +21,8 @@
     <script>
       $(document).ready(function () {
         $("#ex1_Spike,#ex1_Jerry").click(function () {
-          $(this).hide();
+          $(this).css({border: '1px solid red'})
+          $(location).attr("href", "ex1.html");
         });
         $("#ex1_Tom").click(function () {
           $(location).attr("href", "ex2.html");
