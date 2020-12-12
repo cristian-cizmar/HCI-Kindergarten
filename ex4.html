@@ -2,22 +2,21 @@
 <html lang="ro">
 <head>
     <title>Probe</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 <div>
+    <div id="imgDiv4">
+        <img src="ex4/4a.png" id="ex4_wrong" alt=""/>
+        <img src="ex4/4b.png" id="ex4_correct1" alt=""/>
+        <img src="ex4/4c.png" id="ex4_correct2" class="img3" alt=""/>
+    </div>
     <div>
         Mama lui Jerry te roaga sa ii raspunzi la intrebare, asadar va trebui sa asculti cu atentie:
         Cine le face pe toate cu masura ?
-        <img src="ex4/4.png" id="ex4_tom" alt=""/>
-    </div>
-    <div id="imgDiv">
-      
-        <img src="ex4/4a.png" id="ex4_wrong"  alt=""/>
-        <img src="ex4/4b.png" id="ex4_correct1"  alt=""/>
-        <img src="ex4/4c.png" id="ex4_correct2"  alt=""/>
+        <img class="Tom" src="ex4/4.png" id="ex4_tom" alt=""/>
     </div>
 </div>
 <script>
@@ -30,16 +29,18 @@
             $(location).attr("href", "ex4.html");
         });
         $("#ex4_correct1").click(function () {
-            if(!correctAnswers.includes("centi"))
+            $(this).css({border: '1px solid green'})
+            if (!correctAnswers.includes("centi"))
                 correctAnswers.push("centi")
-            if(correctAnswers.length > 1)
+            if (correctAnswers.length > 1)
                 $(location).attr("href", "ex5.html");
 
         });
         $("#ex4_correct2").click(function () {
-            if(!correctAnswers.includes("ata"))
+            $(this).css({border: '1px solid green'})
+            if (!correctAnswers.includes("ata"))
                 correctAnswers.push("ata")
-            if(correctAnswers.length > 1)
+            if (correctAnswers.length > 1)
                 $(location).attr("href", "ex5.html");
         });
     });

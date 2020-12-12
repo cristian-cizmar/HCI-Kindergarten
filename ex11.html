@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="ro">
-  <head>
+<head>
     <title>Probe</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
-  <body>
+</head>
+<body>
+<div>
     <div>
-      <div>
         Spike te roaga sa asculti cu atentie si sa-i raspunzi la intrebare: Cine
         cauta si prinde si pe hoti ii inchide?
-      </div>
-      <div id="meseriiDiv">
-        <img src="ex11/11a.png" class="ex9_wrong" />
-        <img src="ex11/11b.png" class="ex9_correct" />
-        <img src="ex11/11c.png" class="ex9_wrong" />
-        <img src="ex11/11d.png" class="ex9_wrong" />
-      </div>
     </div>
-    <script>
-      $(document).ready(function () {
+    <div id="meseriiDiv">
+        <img src="ex11/11a.png" class="ex9_wrong"/>
+        <img src="ex11/11b.png" class="ex9_correct"/>
+        <img src="ex11/11c.png" class="ex9_wrong"/>
+        <img src="ex11/11d.png" class="ex9_wrong"/>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
         $(".ex9_wrong").click(function () {
-          $(this).css({ border: "1px solid red" });
+            $(this).css({border: "1px solid red"});
         });
         $(".ex9_correct").click(function () {
-          $(location).attr("href", "ex12.html");
+            $(location).attr("href", "ex12.html");
         });
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

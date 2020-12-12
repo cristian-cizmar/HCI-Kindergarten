@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="ro">
-  <head>
+<head>
     <title>Probe</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
-  <body>
+</head>
+<body>
+<div>
     <div>
-      <div>
         Priveste cu atentie imaginile de mai jos: Tom foloseste pe scena
         instrumente si doreste sa stie cate dintre imaginile de mai jos contin
         instrumente
-      </div>
-      <div id="instrumentDiv">
-        <img src="ex9/9a.png" id="carte" />
-        <img src="ex9/9b.png" id="vioara" />
-        <img src="ex9/9c.png" id="pian" />
-      </div>
-      <div id="imgDiv">
-        <img src="ex6/6a.png" id="ex9_1" />
-        <img src="ex6/6b.png" id="ex9_2" />
-        <img src="ex6/6c.png" id="ex9_3" />
-      </div>
     </div>
-    <script>
-      $(document).ready(function () {
+    <div id="instrumentDiv">
+        <img src="ex9/9a.png" id="carte"/>
+        <img src="ex9/9b.png" id="vioara"/>
+        <img src="ex9/9c.png" id="pian"/>
+    </div>
+    <div id="imgDiv9">
+        <img src="ex6/6a.png" id="ex9_1"/>
+        <img src="ex6/6b.png" id="ex9_2"/>
+        <img src="ex6/6c.png" id="ex9_3"/>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
         $("#ex9_1,#ex9_3").click(function () {
-          $(this).hide();
+            $(this).hide();
         });
         $("#ex9_2").click(function () {
-          $(location).attr("href", "ex10.html");
+            $(location).attr("href", "ex10.html");
         });
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

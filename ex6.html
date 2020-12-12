@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="ro">
-  <head>
+<head>
     <title>Probe</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
-  <body>
+</head>
+<body>
+<div>
     <div>
-      <div>
         Daca Tom mananca in prima pauza de masa a concertului- un croissant, iar
         in a doua pauza inca un croissant, cate croissante a mancat Tom?
-      </div>
-      <div id="cornDiv">
-        <img src="ex6/6.png" id="corn_1" />
-        <img src="ex6/6.png" id="corn_2" />
-      </div>
-      <div id="imgDiv">
-        <img src="ex6/6a.png" id="ex6_1" />
-        <img src="ex6/6b.png" id="ex6_2" />
-        <img src="ex6/6c.png" id="ex6_3" />
-      </div>
     </div>
-    <script>
-      $(document).ready(function () {
+    <div id="cornDiv">
+        <img src="ex6/6.png" id="corn_1"/>
+        <img src="ex6/6.png" id="corn_2"/>
+    </div>
+    <div id="imgDiv6">
+        <img src="ex6/6a.png" id="ex6_1"/>
+        <img src="ex6/6b.png" id="ex6_2"/>
+        <img src="ex6/6c.png" id="ex6_3"/>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
         //trebuie modificat dupa narare
         setTimeout(function () {
-          $("#corn_1").css("visibility", "visible");
+            $("#corn_1").css("visibility", "visible");
         }, 1000);
         setTimeout(function () {
-          $("#corn_2").css("visibility", "visible");
-          $("#ex6_1,#ex6_3").click(function () {
-            $(this).hide();
-          });
-          $("#ex6_2").click(function () {
-            $(location).attr("href", "ex7.html");
-          });
+            $("#corn_2").css("visibility", "visible");
+            $("#ex6_1,#ex6_3").click(function () {
+                $(this).hide();
+            });
+            $("#ex6_2").click(function () {
+                $(location).attr("href", "ex7.html");
+            });
         }, 3000);
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>
