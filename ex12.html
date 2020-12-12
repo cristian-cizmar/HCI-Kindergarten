@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div>
+        Politistul Spike isi aduna instrumentele si te roaga sa il ajuti!
+      </div>
+      <div class="imgDiv1">
+        <img src="ex12/12a.png" id="ex12_wrong1" alt="" />
+        <img src="ex12/12b.png" id="ex12_correct1" alt="" />
+        <img src="ex12/12c.png" id="ex12_wrong2" alt="" />
+        <img src="ex12/12d.png" id="ex12_correct2" alt="" />
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        var correctAnswers = [];
+
+        $("#ex12_wrong1,#ex12_wrong2").click(function () {
+          //$(this).hide();
+          $(location).attr("href", "ex12.html");
+        });
+        $("#ex12_correct1").click(function () {
+          $(this).css({ border: "1px solid green" });
+          if (!correctAnswers.includes("pistol")) correctAnswers.push("pistol");
+          if (correctAnswers.length > 1) $(location).attr("href", "ex9.html");
+        });
+        $("#ex12_correct2").click(function () {
+          $(this).css({ border: "1px solid green" });
+          if (!correctAnswers.includes("catuse")) correctAnswers.push("catuse");
+          if (correctAnswers.length > 1) $(location).attr("href", "final.html");
+        });
+      });
+    </script>
+  </body>
+</html>

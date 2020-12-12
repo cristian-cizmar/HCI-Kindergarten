@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div>
+        Buna eu sunt Tom si acum te voi ruga sa asculti cu atentie ce rostesc eu
+      </div>
+      <div id="textDiv">
+        <div id="circle" class="ex10_wrong">
+          <span id="text">micro-fon</span>
+        </div>
+        <div id="circle" class="ex10_correct">
+          <span id="text">mi-cro-fon</span>
+        </div>
+        <div id="circle" class="ex10_wrong">
+          <span id="text">mic- rof-on</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function () {
+        $(".ex10_wrong").click(function () {
+          $(this).hide();
+        });
+        $(".ex10_correct").click(function () {
+          $(location).attr("href", "ex11.html");
+        });
+      });
+    </script>
+  </body>
+</html>
