@@ -85,7 +85,7 @@ body {
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 500px;
-    background: rgb(201, 198, 16);
+    background: #E0692D;
     text-align: center;
     margin-left: 50px;
     margin-top: 50px;
@@ -139,6 +139,13 @@ body {
 .Tom {
     width: 250px;
     height: 450px;
+}
+
+.images{
+    width: 300px;
+    height: 300px;
+    margin-top:100px;
+    margin-left:20px;
 }
 
 #tableDiv {
