@@ -9,8 +9,9 @@
 <body>
 <div>
     <div>
-        Spike te roaga sa asculti cu atentie si sa-i raspunzi la intrebare: Cine
-        cauta si prinde si pe hoti ii inchide?
+        <audio id="audio" autoplay>
+            <source src="e11.mp3" type="audio/mpeg">
+        </audio>
     </div>
     <div id="meseriiDiv">
         <img src="ex11/11a.png" class="ex9_wrong"/>
@@ -22,10 +23,16 @@
 <script>
     $(document).ready(function () {
         $(".ex9_wrong").click(function () {
+            document.getElementById("audio").src = "";
+            document.getElementById("audio").src = "e11.mp3";
+
             $(this).css({border: "1px solid red"});
         });
         $(".ex9_correct").click(function () {
-            $(location).attr("href", "ex12.html");
+            document.getElementById("audio").src = "e11_2.mp3";
+            setTimeout(function () {
+                $(location).attr("href", "ex12.html");
+            }, 17 * 1000);
         });
     });
 </script>

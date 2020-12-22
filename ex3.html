@@ -9,8 +9,9 @@
 <body>
 <div>
     <div>
-        Sa ne pregatim de cusut. Ajut-o pe mama lui Tom sa-si aleaga ustensilele
-        de care are nevoie un croitor
+        <audio id="audio" autoplay>
+            <source src="e3.mp3" type="audio/mpeg">
+        </audio>
     </div>
     <div id="imgDiv">
         <img src="ex3/3a.png" id="ex3_wrong1"/>
@@ -25,7 +26,10 @@
             $(this).css({border: '1px solid red'})
         });
         $("#ex3_correct").click(function () {
-            $(location).attr("href", "ex4.html");
+            document.getElementById("audio").src = "e3_2.mp3";
+            setTimeout(function () {
+                $(location).attr("href", "ex4.html");
+            }, 11 * 1000);
         });
     });
 </script>

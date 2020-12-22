@@ -1,70 +1,67 @@
 <!DOCTYPE html>
 <html lang="ro">
-  <head>
+<head>
     <title>Concertul lui Tom</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
+</head>
 
-  <body>
-    <div id="mainDiv">
-      <div id="tempText"></div>
-      <button id="nextStoryButton" onclick="onClickNextStoryButton()">
-        Next
-      </button>
+<body>
+<div id="mainDiv">
+    <div id="tempText">
+        <audio id="audio" autoplay>
+            <source src="p1.mp3" type="audio/mpeg">
+        </audio>
     </div>
+    <button id="nextStoryButton" onclick="onClickNextStoryButton()">
+        Next
+    </button>
+</div>
 
-    <script>
-      var tempStoryTexts = [
-        "In aceasta minunata seara se anunta o petrecere deosebita, unde invitatul special, Tom, va canta cele mai frumoase simfonii la vioara.",
-        "Din pacate, Tom nu si-a pregatit tinuta pentru aceasta seara, asa ca merge la mama sa care este cea mai priceputa croitoreasa din oras. Mama sa il roaga sa ramana o clipita pana ii ia masurile cu ajutorul unui centimetru, apoi ii da voie sa plece. Petrecerea se apropie, Tom isi ia minunatul costum de la mama sa si porneste spre localul unde avea loc  evenimentul.",
-        "Cand ajunge acolo este invitat la bucatarie, unde ospatarul Jerry, il serveste cu o ceasca de cafea si doua croissante cu ciocolata\.",
-        " Dupa ce Tom serveste bucatele, urca pe scena si destinde atmofera\.",
-        "Intre timp, ospatarul Jerry se deplaseaza catre mese pentru a servi ceilalti invitati, dar din neatentie rastoarna tava, sparge farfuriile facand un zgomot puternic, intrerupand astfel, muzica.",
-        "Tom, suparat ca i-a distrus spectacolul, se opreste din cantat, coboara de pe scena si incepe sa alerge dupa Jerry.",
-        "Intre timp, vine politistul Spike si ii pune catusele lui Tom pentru a-l putea calma.",
-        "Cand toata lumea e linistita, stau de vorba, Tom este eliberat si isi cere iertare, dar la fel face si Jerry.",
-        "Concertul a fost, pana la urma, reluat, Tom a reusit sa-si interpreteze toate melodiile pentru care s-a pregatit iar toata lumea a plecat multumita catre casa.",
-      ];
-      var pos = 1,
-        canPress = true;
-      $("#tempText").text(tempStoryTexts[0]);
 
-      // on press spacebar
-      document.body.onkeyup = function (e) {
+<script>
+    var storyTimes = [11, 28, 11, 5, 16, 9, 6, 9, 12];
+    var pos = 1,
+        canPress = false;
+    // on press spacebar
+    document.body.onkeyup = function (e) {
         if (e.keyCode == 32) {
-          onClickNextStoryButton();
+            onClickNextStoryButton();
         }
-      };
+    };
+    console.log(pos);
 
-      function nextPartOfStory() {
+    function nextPartOfStory() {
         pos++;
-
         if (pos > 9) {
-          $("#tempText").text(
-            "Partea de poveste s-a incheiat, urmeaza probele"
-          );
-          $(location).attr("href", "ex1.html");
+            $(location).attr("href", "ex1.html");
         } else {
-          document.getElementById("mainDiv").style.backgroundImage =
-            "url(p" + pos + ".jpg)";
-          $("#tempText").text(tempStoryTexts[pos - 1]);
+            document.getElementById("mainDiv").style.backgroundImage = "url(p" + pos + ".jpg)";
+            var audioFileName = "p" + pos + ".mp3";
+            document.getElementById("audio").src = audioFileName;
         }
-      }
+    }
 
-      function onClickNextStoryButton() {
+    setTimeout(function () {
+        $("#nextStoryButton").attr("style", "display:block");
+        canPress = true;
+        console.log(pos);
+    }, storyTimes[pos - 1] * 1000);
+
+    function onClickNextStoryButton() {
         if (!canPress) return;
         canPress = false;
         $("#nextStoryButton").attr("style", "display:none");
 
         setTimeout(function () {
-          $("#nextStoryButton").attr("style", "display:block");
-          canPress = true;
-        }, 1000);
+            $("#nextStoryButton").attr("style", "display:block");
+            canPress = true;
+            console.log(pos);
+        }, storyTimes[pos] * 1000);
 
         nextPartOfStory();
-      }
-    </script>
-  </body>
+    }
+</script>
+</body>
 </html>

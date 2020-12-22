@@ -9,8 +9,9 @@
 <body>
 <div>
     <div>
-        Daca Tom mananca in prima pauza de masa a concertului- un croissant, iar
-        in a doua pauza inca un croissant, cate croissante a mancat Tom?
+        <audio id="audio" autoplay>
+            <source src="e6.mp3" type="audio/mpeg">
+        </audio>
     </div>
     <div id="cornDiv">
         <img src="ex6/6.png" id="corn_1"/>
@@ -30,13 +31,14 @@
         }, 1000);
         setTimeout(function () {
             $("#corn_2").css("visibility", "visible");
-            $("#ex6_1,#ex6_3").click(function () {
-                $(this).hide();
-            });
-            $("#ex6_2").click(function () {
-                $(location).attr("href", "ex7.html");
-            });
-        }, 3000);
+        }, 9000);
+        $("#ex6_1,#ex6_3").click(function () {
+            $(this).hide();
+        });
+        $("#ex6_2").click(function () {
+            $(location).attr("href", "ex7.html");
+        });
+
     });
 </script>
 </body>

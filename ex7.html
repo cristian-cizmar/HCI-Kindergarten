@@ -9,7 +9,9 @@
 <body>
 <div>
     <div>
-        Omul care se ocupa de aducerea mancarii si bauturilor la fiecare masa este
+        <audio id="audio" autoplay>
+            <source src="e7.mp3" type="audio/mpeg">
+        </audio>
     </div>
     <div class="imgDiv1" id="ex7_div1">
         <img src="ex7/7a.png" id="ex7_correct1"/>
@@ -23,16 +25,19 @@
     </div>
 </div>
 <script>
+    var file = "e7.mp3";
     $(document).ready(function () {
         $("#ex7_wrong1,#ex7_wrong2,#ex7_wrong3,#ex7_wrong4").click(function () {
             //$(this).hide();
+            document.getElementById("audio").src = file;
             $(this).css({border: '1px solid red'})
         });
         $("#ex7_correct1").click(function () {
-            //$(location).attr("href", "ex4.html");
+            document.getElementById("audio").src = "";
             $("#ex7_div1").css({visibility: 'hidden'})
             $("#ex7_div2").css({visibility: 'visible', top: '0px', position: 'absolute'})
-
+            document.getElementById("audio").src = "e7_2.mp3";
+            file = "e7_2.mp3";
             $("#ex7_correct2").click(function () {
                 $(location).attr("href", "ex8.html");
             });

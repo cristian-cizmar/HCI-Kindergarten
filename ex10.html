@@ -9,7 +9,9 @@
 <body>
 <div>
     <div>
-        Buna eu sunt Tom si acum te voi ruga sa asculti cu atentie ce rostesc eu
+        <audio id="audio" autoplay>
+            <source src="e10.mp3" type="audio/mpeg">
+        </audio>
     </div>
     <div id="textDiv">
         <div id="circle" class="ex10_wrong">
@@ -29,7 +31,10 @@
             $(this).hide();
         });
         $(".ex10_correct").click(function () {
-            $(location).attr("href", "ex11.html");
+            document.getElementById("audio").src = "e10_2.mp3";
+            setTimeout(function () {
+                $(location).attr("href", "ex11.html");
+            }, 17 * 1000);
         });
     });
 </script>
