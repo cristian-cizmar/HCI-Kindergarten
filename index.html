@@ -29,8 +29,7 @@
         if (e.keyCode == 32) {
             onClickNextStoryButton();
         }
-    };
-    console.log(pos);
+      };
 
     function nextPartOfStory() {
         pos++;
@@ -40,6 +39,9 @@
             document.getElementById("mainDiv").style.backgroundImage = "url(p" + pos + ".jpg)";
             var audioFileName = "p" + pos + ".mp3";
             document.getElementById("audio").src = audioFileName;
+          document.getElementById("mainDiv").style.backgroundImage =
+            "url(poveste/p" + pos + ".jpg)";
+          $("#tempText").text(tempStoryTexts[pos - 1]);
         }
     }
 

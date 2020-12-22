@@ -25,13 +25,12 @@
         var correctAnswers = [];
 
         $("#ex12_wrong1,#ex12_wrong2").click(function () {
-          //$(this).hide();
           $(location).attr("href", "ex12.html");
         });
         $("#ex12_correct1").click(function () {
           $(this).css({ border: "1px solid green" });
           if (!correctAnswers.includes("pistol")) correctAnswers.push("pistol");
-          if (correctAnswers.length > 1) $(location).attr("href", "ex9.html");
+          if (correctAnswers.length > 1) $(location).attr("href", "final.html");
         });
         $("#ex12_correct2").click(function () {
           $(this).css({ border: "1px solid green" });
