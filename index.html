@@ -11,57 +11,71 @@
 <div id="mainDiv">
     <div id="tempText">
         <audio id="audio" autoplay>
-            <source src="p1.mp3" type="audio/mpeg">
+            <source src="inregistrari/p1.mp3" type="audio/mpeg">
         </audio>
     </div>
-    <button id="nextStoryButton" onclick="onClickNextStoryButton()">
-        Next
-    </button>
+    <div id="nextStoryButton" class = "shadow" onclick="onClickNextStoryButton()" style="display:none">
+    </div>
 </div>
 
 
 <script>
-    var storyTimes = [11, 28, 11, 5, 16, 9, 6, 9, 12];
-    var pos = 1,
-        canPress = false;
-    // on press spacebar
-    document.body.onkeyup = function (e) {
-        if (e.keyCode == 32) {
-            onClickNextStoryButton();
+    var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
         }
-    };
+    })(window.navigator.userAgent.toLowerCase());
 
-    function nextPartOfStory() {
-        pos++;
-        if (pos > 9) {
-            $(location).attr("href", "ex1.html");
-        } else {
-            document.getElementById("mainDiv").style.backgroundImage =
-                "url(poveste/p" + pos + ".jpg)";
-            var audioFileName = "p" + pos + ".mp3";
-            document.getElementById("audio").src = audioFileName;
-            $("#tempText").text(tempStoryTexts[pos - 1]);
-        }
+    if(browser === "chrome") {
+        document.getElementById("mainDiv").style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
     }
+    else{
+        var storyTimes = [11, 28, 11, 5, 16, 9, 6, 9, 12];
+        var pos = 1,
+            canPress = false;
+        // on press spacebar
+        document.body.onkeyup = function (e) {
+            if (e.keyCode == 32) {
+                onClickNextStoryButton();
+            }
+        };
 
-    setTimeout(function () {
-        $("#nextStoryButton").attr("style", "display:block");
-        canPress = true;
-        console.log(pos);
-    }, storyTimes[pos - 1] * 1000);
-
-    function onClickNextStoryButton() {
-        if (!canPress) return;
-        canPress = false;
-        $("#nextStoryButton").attr("style", "display:none");
+        function nextPartOfStory() {
+            pos++;
+            if (pos > 9) {
+                $(location).attr("href", "ex1.html");
+            } else {
+                document.getElementById("mainDiv").style.backgroundImage =
+                    "url(poveste/p" + pos + ".jpg)";
+                var audioFileName = "inregistrari/p" + pos + ".mp3";
+                document.getElementById("audio").src = audioFileName;
+                $("#tempText").text(tempStoryTexts[pos - 1]);
+            }
+        }
 
         setTimeout(function () {
             $("#nextStoryButton").attr("style", "display:block");
             canPress = true;
             console.log(pos);
-        }, storyTimes[pos] * 1000);
+        }, storyTimes[pos - 1] * 1000);
 
-        nextPartOfStory();
+        function onClickNextStoryButton() {
+            if (!canPress) return;
+            canPress = false;
+            $("#nextStoryButton").attr("style", "display:none");
+
+            setTimeout(function () {
+                $("#nextStoryButton").attr("style", "display:block");
+                canPress = true;
+                console.log(pos);
+            }, storyTimes[pos] * 1000);
+
+            nextPartOfStory();
+        }
     }
 </script>
 </body>

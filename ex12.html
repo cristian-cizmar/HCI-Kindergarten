@@ -10,33 +10,49 @@
     <div>
       <div>
         <audio id="audio" autoplay>
-          <source src="e12.mp3" type="audio/mpeg">
+          <source src="inregistrari/e12.mp3" type="audio/mpeg">
         </audio>
       </div>
-      <div class="imgDiv12">
-        <img src="ex12/12a.png" id="ex12_wrong1" alt="" />
-        <img src="ex12/12b.png" id="ex12_correct1" alt="" />
-        <img src="ex12/12c.png" id="ex12_wrong2" alt="" />
-        <img src="ex12/12d.png" id="ex12_correct2" alt="" />
+      <div id="img" class="imgDiv12">
+        <img src="ex12/12a.png" id="ex12_wrong1" class="shadow" alt="" style="margin-left: 15%"/>
+        <img src="ex12/12b.png" id="ex12_correct1" class="shadow" alt="" />
+        <img src="ex12/12c.png" id="ex12_wrong2" class="shadow" alt="" />
+        <img src="ex12/12d.png" id="ex12_correct2" class="shadow" alt="" />
       </div>
     </div>
     <script>
       $(document).ready(function () {
-        var correctAnswers = [];
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
 
-        $("#ex12_wrong1,#ex12_wrong2").click(function () {
-          $(location).attr("href", "ex12.html");
-        });
-        $("#ex12_correct1").click(function () {
-          $(this).css({ border: "1px solid green" });
-          if (!correctAnswers.includes("pistol")) correctAnswers.push("pistol");
-          if (correctAnswers.length > 1) $(location).attr("href", "final.html");
-        });
-        $("#ex12_correct2").click(function () {
-          $(this).css({ border: "1px solid green" });
-          if (!correctAnswers.includes("catuse")) correctAnswers.push("catuse");
-          if (correctAnswers.length > 1) $(location).attr("href", "final.html");
-        });
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(img).hide();
+        }
+        else{
+          var correctAnswers = [];
+
+          $("#ex12_wrong1,#ex12_wrong2").click(function () {
+            $(this).removeClass("shadow").addClass("redShadow");
+          });
+          $("#ex12_correct1").click(function () {
+            $(this).removeClass("shadow").addClass("greenShadow");
+            if (!correctAnswers.includes("pistol")) correctAnswers.push("pistol");
+            if (correctAnswers.length > 1) $(location).attr("href", "final.html");
+          });
+          $("#ex12_correct2").click(function () {
+            $(this).removeClass("shadow").addClass("greenShadow");
+            if (!correctAnswers.includes("catuse")) correctAnswers.push("catuse");
+            if (correctAnswers.length > 1) $(location).attr("href", "final.html");
+          });
+        }
       });
     </script>
   </body>

@@ -10,38 +10,53 @@
 <div>
     <div>
         <audio id="audio" autoplay>
-            <source src="e7.mp3" type="audio/mpeg">
+            <source src="inregistrari/e7.mp3" type="audio/mpeg">
         </audio>
     </div>
     <div class="imgDiv1" id="ex7_div1">
-        <img src="ex7/7a.png" id="ex7_correct1"/>
-        <img src="ex7/7b.png" id="ex7_wrong1"/>
-        <img src="ex7/7c.png" id="ex7_wrong2"/>
+        <img src="ex7/7a.png" id="ex7_correct1" class = "shadow" style="position: absolute; bottom:10%; left:7.5%"/>
+        <img src="ex7/7b.png" id="ex7_wrong1" class = "shadow" style="position: absolute; bottom:10%; left:33%"/>
+        <img src="ex7/7c.png" id="ex7_wrong2" class = "shadow" style="position: absolute; bottom:10%; left:60%"/>
     </div>
-    <div class="imgDiv1" id="ex7_div2" style="visibility: hidden">
-        <img src="ex7/7d.png" id="ex7_correct2"/>
-        <img src="ex7/7e.png" id="ex7_wrong3"/>
-        <img src="ex7/7f.png" id="ex7_wrong4"/>
+    <div class="imgDiv2" id="ex7_div2" style="visibility: hidden">
+        <img src="ex7/7d.png" id="ex7_correct2" class = "shadow" style="margin-left: 15%; width:20%; height:20%"/>
+        <img src="ex7/7e.png" id="ex7_wrong3" class = "shadow" style="width:20%; height:20%"/>
+        <img src="ex7/7f.png" id="ex7_wrong4" class = "shadow" style="width:20%; height:20%"/>
     </div>
 </div>
 <script>
-    var file = "e7.mp3";
     $(document).ready(function () {
-        $("#ex7_wrong1,#ex7_wrong2,#ex7_wrong3,#ex7_wrong4").click(function () {
-            //$(this).hide();
-            document.getElementById("audio").src = file;
-            $(this).css({border: '1px solid red'})
-        });
-        $("#ex7_correct1").click(function () {
-            document.getElementById("audio").src = "";
-            $("#ex7_div1").css({visibility: 'hidden'})
-            $("#ex7_div2").css({visibility: 'visible', top: '0px', position: 'absolute'})
-            document.getElementById("audio").src = "e7_2.mp3";
-            file = "e7_2.mp3";
-            $("#ex7_correct2").click(function () {
-                $(location).attr("href", "ex8.html");
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
+
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(ex7_div1).hide();
+            $(ex7_div2).hide();
+        }
+        else{
+            var file = "inregistrari/e7.mp3";
+            $("#ex7_wrong1,#ex7_wrong2,#ex7_wrong3,#ex7_wrong4").click(function () {
+                $(this).removeClass("shadow").addClass("redShadow");
             });
-        });
+            $("#ex7_correct1").click(function () {
+                document.getElementById("audio").src = "";
+                $("#ex7_div1").css({visibility: 'hidden'})
+                $("#ex7_div2").css({visibility: 'visible', top: '0px', position: 'absolute'})
+                document.getElementById("audio").src = "inregistrari/e7_2.mp3";
+                file = "inregistrari/e7_2.mp3";
+                $("#ex7_correct2").click(function () {
+                    $(location).attr("href", "ex8.html");
+                });
+            });
+        }
     });
 </script>
 </body>

@@ -10,35 +10,51 @@
 <div>
     <div>
         <audio id="audio" autoplay>
-            <source src="e6.mp3" type="audio/mpeg">
+            <source src="inregistrari/e6.mp3" type="audio/mpeg">
         </audio>
     </div>
     <div id="cornDiv">
-        <img src="ex6/6.png" id="corn_1"/>
-        <img src="ex6/6.png" id="corn_2"/>
+        <img src="ex6/6.png" id="corn_1" style="margin-left: 23%"/>
+        <img src="ex6/6.png" id="corn_2" style="margin-left: 5%"/>
     </div>
     <div id="imgDiv6">
-        <img src="ex6/6a.png" id="ex6_1"/>
-        <img src="ex6/6b.png" id="ex6_2"/>
-        <img src="ex6/6c.png" id="ex6_3"/>
+        <img src="ex6/6a.png" id="ex6_1" class = "shadow" style="margin-left: 23%"/>
+        <img src="ex6/6b.png" id="ex6_2" class = "shadow" style="margin-left: 10%"/>
+        <img src="ex6/6c.png" id="ex6_3" class = "shadow" style="margin-left: 10%"/>
     </div>
 </div>
 <script>
     $(document).ready(function () {
-        //trebuie modificat dupa narare
-        setTimeout(function () {
-            $("#corn_1").css("visibility", "visible");
-        }, 1000);
-        setTimeout(function () {
-            $("#corn_2").css("visibility", "visible");
-        }, 9000);
-        $("#ex6_1,#ex6_3").click(function () {
-            $(this).hide();
-        });
-        $("#ex6_2").click(function () {
-            $(location).attr("href", "ex7.html");
-        });
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
 
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(cornDiv).hide();
+            $(imgDiv6).hide();
+        }
+        else{
+            //trebuie modificat dupa narare
+            setTimeout(function () {
+                $("#corn_1").css("visibility", "visible");
+            }, 1000);
+            setTimeout(function () {
+                $("#corn_2").css("visibility", "visible");
+            }, 9000);
+            $("#ex6_1,#ex6_3").click(function () {
+                $(this).removeClass("shadow").addClass("redShadow");
+            });
+            $("#ex6_2").click(function () {
+                $(location).attr("href", "ex7.html");
+            });
+        }
     });
 </script>
 </body>
