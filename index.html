@@ -34,7 +34,7 @@
         document.getElementById("mainDiv").style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
     }
     else{
-        var storyTimes = [11, 28, 11, 5, 16, 9, 6, 9, 12];
+        var storyTimes = [12.4, 28, 11, 5, 16, 9, 6, 9, 12];
         var pos = 1,
             canPress = false;
         // on press spacebar
@@ -76,6 +76,10 @@
 
             nextPartOfStory();
         }
+
+        setTimeout(function () {
+            document.getElementById("audio").src = "inregistrari/click_pe_sageata.mp3";
+        }, 11500);
     }
 </script>
 </body>
