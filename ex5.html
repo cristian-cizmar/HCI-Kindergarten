@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        <audio id="audio" autoplay>
+            <source src="inregistrari/e5.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <div id="imgDiv">
+        <img src="ex5/5a.png" id="drag1" class="shadow" style="width: 100px; height: 100px; position: absolute; left: 10px"/>
+        <img src="ex5/5b.png" id="drag2" class="shadow" style="width: 100px; height: 100px; position: absolute; left: 110px"/>
+        <img src="ex5/5c.png" id="drag3" class="shadow" style="width: 100px; height: 100px; position: absolute; left: 210px"/>
+        <img src="ex5/5d.png" id="drag4" class="shadow" style="width: 100px; height: 100px; position: absolute; left: 310px"/>
+        <img src="ex5/5e.png" id="drag5" class="shadow" style="width: 100px; height: 100px; position: absolute; left: 410px"/>
+    </div>
+    <div id="tableDiv"
+         style="background-image: url('ex5/table.png'); padding: 10px; width: 600px; height: 300px; position: absolute">
+
+    </div>
+</div>
+<script>
+
+
+    $(document).ready(function () {
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
+
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(imgDiv).hide();
+            $(tableDiv).hide();
+        }
+        else{
+            var correctAnswers = []
+
+            $(function () {
+                $("#imgDiv img").draggable({
+                    revert: "invalid",
+                    refreshPositions: true,
+                    drag: function (event, ui) {
+                        ui.helper.addClass("draggable");
+                    },
+                    stop: function (event, ui) {
+                    }
+                });
+                $("#tableDiv").droppable({
+                    drop: function (event, ui) {
+                        if ($("#tableDiv img").length === 0) {
+                            $("#tableDiv").html("");
+                        }
+                        var data = ui.draggable.attr("id");
+
+                        if (!correctAnswers.includes(data) && data !== "drag4" && data !== "drag5")
+                            correctAnswers.push(data)
+                        if (correctAnswers.length >= 3)
+                            $(location).attr("href", "ex6.html");
+
+                        if (data === "drag1") {
+                            $(drag1).removeClass("shadow").addClass("greenShadow");
+                        }
+                        if (data === "drag2") {
+                            $(drag2).removeClass("shadow").addClass("greenShadow");
+                        }
+                        if (data === "drag3") {
+                            $(drag3).removeClass("shadow").addClass("greenShadow");
+                        }
+                        if (data === "drag4") {
+                            $(drag4).removeClass("shadow").addClass("redShadow");
+                            $("#" + data).css({top: 'auto', left: '310px'});
+                            return;
+                        }
+                        if (data === "drag5") {
+                            $(drag5).removeClass("shadow").addClass("redShadow");
+                            $("#" + data).css({top: 'auto', left: '410px'});
+                            return;
+                        }
+
+                        console.log(data)
+                        //$("#"+data).css({top: ui.offset.top, left: ui.offset.left, position:'absolute'});
+                        ui.draggable.addClass("dropped");
+                        $("#tableDiv").append(ui.draggable);
+                    }
+                });
+            });
+        }
+    });
+</script>
+</body>
+</html>

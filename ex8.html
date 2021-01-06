@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        <audio id="audio" autoplay>
+            <source src="inregistrari/e8.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <div id="img" class="imgDiv8">
+        <img src="ex8/8a.png" id="ex8_wrong1" class="shadow" alt=""/>
+        <img src="ex8/8b.png" id="ex8_correct1" class="shadow" alt=""/>
+        <img src="ex8/8c.png" id="ex8_wrong2" class="shadow" alt=""/>
+        <img src="ex8/8d.png" id="ex8_correct2" class="shadow" alt=""/>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
+
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(img).hide();
+        }
+        else{
+            var correctAnswers = []
+
+            $("#ex8_wrong1,#ex8_wrong2").click(function () {
+                $(this).removeClass("shadow").addClass("redShadow");
+            });
+            $("#ex8_correct1").click(function () {
+                $(this).removeClass("shadow").addClass("greenShadow");
+                if (!correctAnswers.includes("pian"))
+                    correctAnswers.push("pian")
+                if (correctAnswers.length > 1)
+                    $(location).attr("href", "ex9.html");
+
+            });
+            $("#ex8_correct2").click(function () {
+                $(this).removeClass("shadow").addClass("greenShadow");
+                if (!correctAnswers.includes("vioara"))
+                    correctAnswers.push("vioara")
+                if (correctAnswers.length > 1)
+                    $(location).attr("href", "ex9.html");
+            });
+        }
+    });
+</script>
+</body>
+</html>

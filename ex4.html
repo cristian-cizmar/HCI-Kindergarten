@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <div id="imgDiv4">
+        <img src="ex4/4a.png" id="ex4_wrong" class="shadow" alt="" style="margin-top:5%" />
+        <img src="ex4/4b.png" id="ex4_correct1" class="shadow" alt=""/>
+        <img src="ex4/4c.png" id="ex4_correct2" class="img3 shadow" alt=""/>
+    </div>
+    <div>
+        <audio id="audio" autoplay>
+            <source src="inregistrari/e4.mp3" type="audio/mpeg">
+        </audio>
+        <img class="Tom" src="ex4/4.png" id="ex4_tom" alt="" style="position: absolute; bottom:10%; left:70%"/>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
+
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(imgDiv4).hide();
+            $(ex4_tom).hide();
+        }
+        else{
+            var correctAnswers = []
+
+            $("#ex4_wrong").click(function () {
+                $(this).removeClass("shadow").addClass("redShadow");
+            });
+            $("#ex4_correct1").click(function () {
+                $(this).removeClass("shadow").addClass("greenShadow");
+                if (!correctAnswers.includes("centi"))
+                    correctAnswers.push("centi")
+                if (correctAnswers.length > 1)
+                    $(location).attr("href", "ex5.html");
+
+            });
+            $("#ex4_correct2").click(function () {
+                $(this).removeClass("shadow").addClass("greenShadow");
+                if (!correctAnswers.includes("ata"))
+                    correctAnswers.push("ata")
+                if (correctAnswers.length > 1)
+                    $(location).attr("href", "ex5.html");
+            });
+        }
+    });
+</script>
+</body>
+</html>

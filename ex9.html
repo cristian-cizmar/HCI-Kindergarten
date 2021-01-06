@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        <audio id="audio" autoplay>
+            <source src="inregistrari/e9.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <div id="instrumentDiv">
+        <img src="ex9/9a.png" id="carte" style="margin-top:5%"/>
+        <img src="ex9/9b.png" id="vioara"/>
+        <img src="ex9/9c.png" id="pian"/>
+    </div>
+    <div id="imgDiv9">
+        <img src="ex6/6a.png" id="ex9_1" class="shadow"/>
+        <img src="ex6/6b.png" id="ex9_2" class="shadow"/>
+        <img src="ex6/6c.png" id="ex9_3" class="shadow"/>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
+
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(instrumentDiv).hide();
+            $(imgDiv9).hide();
+        }
+        else{
+            $("#ex9_1,#ex9_3").click(function () {
+                $(this).removeClass("shadow").addClass("redShadow");
+            });
+            $("#ex9_2").click(function () {
+                $(location).attr("href", "ex10.html");
+            });
+        }
+    });
+</script>
+</body>
+</html>

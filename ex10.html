@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <title>Probe</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        <audio id="audio" autoplay>
+            <source src="inregistrari/e10.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <div id="textDiv">
+        <div id="circle" class="ex10_wrong shadow">
+            <img class="images" src="silabe/page1-removebg-preview.png" id="silabe6"/>
+        </div>
+        <div id="circle" class="ex10_correct shadow">
+            <img class="images" src="silabe/imageedit_1_8938667079.png" id="silabe4"/>
+        </div>
+        <div id="circle" class="ex10_wrong shadow">
+            <img class="images" src="silabe/page-removebg-preview.png" id="silabe5"/>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var browser = (function (agent) {
+        switch (true) {
+            case agent.indexOf("edge") > -1: return "edge";
+            case agent.indexOf("edg/") > -1: return "chromium edge"; // Match also / to avoid matching for the older Edge
+            case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+            case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+            default: return "other";
+        }
+        })(window.navigator.userAgent.toLowerCase());
+
+        if(browser === "chrome") {
+            document.body.style.backgroundImage ="url(poveste/chrome_nu_merge.png)";
+            $(textDiv).hide();
+        }
+        else{
+            var clickedCorrect = false;
+            $(".ex10_wrong").click(function () {
+                $(this).removeClass("shadow").addClass("redShadow");
+            });
+            $(".ex10_correct").click(function () {
+                if(clickedCorrect === false){
+                    clickedCorrect = true;
+                $(this).removeClass("shadow").addClass("greenShadow");
+                    document.getElementById("audio").src = "inregistrari/e10_2.mp3";
+                    setTimeout(function () {
+                        $(location).attr("href", "ex11.html");
+                    }, 18 * 1000);
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
